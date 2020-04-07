@@ -1,0 +1,112 @@
+﻿@model IEnumerable<EGL_V1.Models.Dehumidifier>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Partner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalModelInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DehumidifierType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlternateConfigurationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntegratedEnergyFactor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WaterRemovalCapcity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Market)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelIdentifier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Criteria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppliancesType.TypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Partner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalModelInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DehumidifierType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlternateConfigurationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IntegratedEnergyFactor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WaterRemovalCapcity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Market)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelIdentifier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Criteria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppliancesType.TypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DehumidifiersId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DehumidifiersId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DehumidifiersId })
+        </td>
+    </tr>
+}
+
+</table>

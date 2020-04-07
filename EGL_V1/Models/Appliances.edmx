@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppliancesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppliancesType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TypeDesc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dehumidifiers">
+          <Key>
+            <PropertyRef Name="DehumidifiersId" />
+          </Key>
+          <Property Name="DehumidifiersId" Type="int" Nullable="false" />
+          <Property Name="Partner" Type="varchar" MaxLength="100" />
+          <Property Name="BrandName" Type="varchar" MaxLength="100" />
+          <Property Name="ModelName" Type="varchar" MaxLength="100" />
+          <Property Name="ModelNumber" Type="varchar" MaxLength="100" />
+          <Property Name="AdditionalModelInfo" Type="varchar" MaxLength="100" />
+          <Property Name="DehumidifierType" Type="varchar" MaxLength="100" />
+          <Property Name="AlternateConfigurationType" Type="varchar" MaxLength="100" />
+          <Property Name="IntegratedEnergyFactor" Type="float" />
+          <Property Name="WaterRemovalCapcity" Type="float" />
+          <Property Name="DateAvailable" Type="date" />
+          <Property Name="Market" Type="varchar" MaxLength="100" />
+          <Property Name="ModelIdentifier" Type="varchar" MaxLength="100" />
+          <Property Name="Criteria" Type="bit" />
+          <Property Name="TypeId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Dehumidif__TypeI__25869641">
+          <End Role="AppliancesType" Type="Self.AppliancesType" Multiplicity="0..1" />
+          <End Role="Dehumidifiers" Type="Self.Dehumidifiers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppliancesType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Dehumidifiers">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppliancesModelStoreContainer">
+          <EntitySet Name="AppliancesType" EntityType="Self.AppliancesType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dehumidifiers" EntityType="Self.Dehumidifiers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Dehumidif__TypeI__25869641" Association="Self.FK__Dehumidif__TypeI__25869641">
+            <End Role="AppliancesType" EntitySet="AppliancesType" />
+            <End Role="Dehumidifiers" EntitySet="Dehumidifiers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppliancesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppliancesType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Dehumidifiers" Relationship="Self.FK__Dehumidif__TypeI__25869641" FromRole="AppliancesType" ToRole="Dehumidifiers" />
+        </EntityType>
+        <EntityType Name="Dehumidifier">
+          <Key>
+            <PropertyRef Name="DehumidifiersId" />
+          </Key>
+          <Property Name="DehumidifiersId" Type="Int32" Nullable="false" />
+          <Property Name="Partner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalModelInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DehumidifierType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateConfigurationType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IntegratedEnergyFactor" Type="Double" />
+          <Property Name="WaterRemovalCapcity" Type="Double" />
+          <Property Name="DateAvailable" Type="DateTime" Precision="0" />
+          <Property Name="Market" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModelIdentifier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Criteria" Type="Boolean" />
+          <Property Name="TypeId" Type="Int32" />
+          <NavigationProperty Name="AppliancesType" Relationship="Self.FK__Dehumidif__TypeI__25869641" FromRole="Dehumidifiers" ToRole="AppliancesType" />
+        </EntityType>
+        <Association Name="FK__Dehumidif__TypeI__25869641">
+          <End Role="AppliancesType" Type="Self.AppliancesType" Multiplicity="0..1" />
+          <End Role="Dehumidifiers" Type="Self.Dehumidifier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppliancesType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="Dehumidifiers">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppliancesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppliancesTypes" EntityType="Self.AppliancesType" />
+          <EntitySet Name="Dehumidifiers" EntityType="Self.Dehumidifier" />
+          <AssociationSet Name="FK__Dehumidif__TypeI__25869641" Association="Self.FK__Dehumidif__TypeI__25869641">
+            <End Role="AppliancesType" EntitySet="AppliancesTypes" />
+            <End Role="Dehumidifiers" EntitySet="Dehumidifiers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppliancesModelStoreContainer" CdmEntityContainer="AppliancesEntities">
+          <EntitySetMapping Name="AppliancesTypes">
+            <EntityTypeMapping TypeName="AppliancesModel.AppliancesType">
+              <MappingFragment StoreEntitySet="AppliancesType">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dehumidifiers">
+            <EntityTypeMapping TypeName="AppliancesModel.Dehumidifier">
+              <MappingFragment StoreEntitySet="Dehumidifiers">
+                <ScalarProperty Name="DehumidifiersId" ColumnName="DehumidifiersId" />
+                <ScalarProperty Name="Partner" ColumnName="Partner" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="AdditionalModelInfo" ColumnName="AdditionalModelInfo" />
+                <ScalarProperty Name="DehumidifierType" ColumnName="DehumidifierType" />
+                <ScalarProperty Name="AlternateConfigurationType" ColumnName="AlternateConfigurationType" />
+                <ScalarProperty Name="IntegratedEnergyFactor" ColumnName="IntegratedEnergyFactor" />
+                <ScalarProperty Name="WaterRemovalCapcity" ColumnName="WaterRemovalCapcity" />
+                <ScalarProperty Name="DateAvailable" ColumnName="DateAvailable" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="ModelIdentifier" ColumnName="ModelIdentifier" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
