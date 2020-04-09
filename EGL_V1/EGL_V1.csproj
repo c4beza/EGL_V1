@@ -179,6 +179,7 @@
       <DependentUpon>Appliances.edmx</DependentUpon>
       <LastGenOutput>Appliances.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\HtmlPage1.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Appliances.edmx">
